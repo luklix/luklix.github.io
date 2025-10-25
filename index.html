@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Glücks-Booster</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="header">
+    <h1>Glücks-Booster</h1>
+    <p class="tagline">Kurze, freundliche Impulse für gute Laune — mit Rücksicht auf deine Zeit.</p>
+  </header>
+
+  <main class="container">
+    <section class="booster" aria-labelledby="booster-heading">
+      <h2 id="booster-heading">Drück den Glücks-Knopf</h2>
+      <button id="boostBtn" class="big-btn" aria-describedby="boost-desc">Glücks-Knopf</button>
+      <p id="boost-desc" class="muted">Ein Klick spendiert ein paar Sonnenstrahlen & eine positive Nachricht.</p>
+      <div id="message" class="message" role="status" aria-live="polite"></div>
+      <div id="hearts" class="hearts" aria-hidden="true"></div>
+    </section>
+
+    <section class="controls" aria-labelledby="controls-heading">
+      <h3 id="controls-heading">Einstellungen & gesunde Nutzung</h3>
+
+      <label class="row">
+        <span>Sound:</span>
+        <input type="checkbox" id="soundCheckbox" />
+      </label>
+
+      <label class="row">
+        <span>Sitzungs-Limit (Minuten):</span>
+        <input type="number" id="sessionLimit" min="1" max="180" value="10" /> 
+      </label>
+
+      <div class="row">
+        <button id="startSession" class="small-btn">Sitzung starten</button>
+        <button id="endSession" class="small-btn secondary">Sitzung beenden</button>
+      </div>
+
+      <div id="sessionInfo" class="muted">Sitzung läuft: <span id="timeElapsed">0</span> min</div>
+    </section>
+
+    <section class="journal" aria-labelledby="journal-heading">
+      <h3 id="journal-heading">Dankbarkeits-Journal (klein)</h3>
+      <form id="journalForm">
+        <input id="journalInput" type="text" placeholder="Wofür bist du heute dankbar?" aria-label="Dankbarkeit" />
+        <button type="submit" class="small-btn">Speichern</button>
+      </form>
+      <ul id="entries" class="entries" aria-live="polite"></ul>
+    </section>
+  </main>
+
+  <div id="confetti-root" aria-hidden="true"></div>
+
+  <!-- Modal / Reminder -->
+  <div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-content">
+      <h4 id="modalTitle">Kleine Pause empfohlen ☀️</h4>
+      <p>Du hast dein gesetztes Sitzungs-Limit erreicht. Eine kurze Pause kann helfen, länger Freude zu behalten.</p>
+      <div class="row">
+        <button id="takeBreak" class="small-btn">Pause jetzt</button>
+        <button id="extend" class="small-btn secondary">+5 Minuten</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p>Diese Seite fördert Wohlbefinden verantwortungsvoll — es werden keine Daten geteilt. Du kannst jederzeit Pausen einstellen.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

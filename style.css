@@ -1,0 +1,120 @@
+:root{
+  --bg1: #ffecd2;
+  --bg2: #fcb69f;
+  --accent: #ff7ab6;
+  --accent2: #6dd3ff;
+  --muted: #5b5b5b;
+  --card: rgba(255,255,255,0.85);
+  --glass: rgba(255,255,255,0.18);
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  background:linear-gradient(135deg,var(--bg1),var(--bg2));
+  color:#222;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  min-height:100vh;
+}
+
+.header{
+  text-align:center;
+  padding:36px 16px 6px;
+}
+.header h1{
+  margin:0;
+  font-size:clamp(1.8rem,3vw,2.8rem);
+  letter-spacing:0.02em;
+}
+.tagline{margin:6px 0 0;color:var(--muted)}
+
+.container{
+  width:100%;
+  max-width:920px;
+  padding:20px;
+  display:grid;
+  grid-template-columns:1fr;
+  gap:18px;
+}
+
+.booster, .controls, .journal{
+  background:var(--card);
+  padding:18px;
+  border-radius:12px;
+  box-shadow:0 6px 18px rgba(0,0,0,0.08);
+}
+
+.big-btn{
+  background:linear-gradient(90deg,var(--accent),var(--accent2));
+  color:white;
+  border: none;
+  padding:18px 28px;
+  border-radius:999px;
+  font-size:1.1rem;
+  cursor:pointer;
+  box-shadow:0 8px 20px rgba(0,0,0,0.12);
+}
+.big-btn:active{transform:translateY(2px)}
+.muted{color:var(--muted);font-size:0.95rem}
+
+.message{
+  margin-top:12px;
+  font-size:1.25rem;
+  min-height:2.2rem;
+}
+
+.hearts{
+  pointer-events:none;
+  margin-top:8px;
+  height:60px;
+  position:relative;
+}
+
+/* small controls */
+.row{display:flex;gap:8px;align-items:center;margin-top:8px}
+.small-btn{
+  padding:8px 12px;border-radius:8px;border:none;background:#fff;cursor:pointer;
+  box-shadow:0 4px 12px rgba(0,0,0,0.06);
+}
+.small-btn.secondary{background:transparent;border:1px solid rgba(0,0,0,0.08)}
+input[type="number"]{width:90px;padding:6px;border-radius:8px;border:1px solid rgba(0,0,0,0.08)}
+
+/* entries */
+.entries{list-style:none;padding-left:0;margin-top:10px}
+.entries li{padding:8px;border-radius:8px;background:var(--glass);margin-bottom:8px;color:#222;}
+
+/* confetti pieces */
+.confetti{
+  position:fixed;
+  width:10px;
+  height:14px;
+  opacity:0.95;
+  will-change:transform,opacity;
+  pointer-events:none;
+  top:0;
+  left:0;
+  transform-origin:center;
+  border-radius:2px;
+}
+
+/* modal */
+.modal{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.28);z-index:40}
+.modal.hidden{display:none}
+.modal-content{background:white;padding:18px;border-radius:12px;max-width:420px;text-align:center;box-shadow:0 10px 40px rgba(0,0,0,0.18)}
+
+.footer{text-align:center;padding:14px;font-size:0.85rem;color:var(--muted);width:100%;max-width:920px;margin-top:12px}
+
+/* responsive */
+@media(min-width:720px){
+  .container{grid-template-columns:1fr 360px;align-items:start}
+  .journal{grid-column:2}
+}
+
+/* simple keyframe for confetti fall */
+@keyframes fall {
+  to { transform: translateY(110vh) rotate(600deg); opacity:0.2; }
+}
